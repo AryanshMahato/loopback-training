@@ -1,0 +1,13 @@
+{
+  "ids": {
+    "User": 5
+  },
+  "models": {
+    "User": {
+      "1": "{\"name\":\"string\",\"email\":\"string\",\"username\":\"string\",\"password\":\"string\",\"gender\":\"string\",\"id\":\"1\"}",
+      "2": "{\"name\":\"string\",\"email\":\"string\",\"username\":\"string\",\"password\":\"string\",\"gender\":\"string\",\"id\":\"2\"}",
+      "b6be7e54-b442-4adf-8479-14b9a73f592e": "{\"id\":\"b6be7e54-b442-4adf-8479-14b9a73f592e\",\"name\":\"string\",\"email\":\"string\",\"username\":\"string\",\"password\":\"string\",\"gender\":\"string\"}",
+      "d832f406-aef2-4f47-82f9-8c06c3c34745": "{\"id\":\"d832f406-aef2-4f47-82f9-8c06c3c34745\",\"name\":\"string\",\"email\":\"string\",\"username\":\"string\",\"password\":\"string\",\"gender\":\"string\"}"
+    }
+  }
+}
