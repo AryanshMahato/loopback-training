@@ -9,6 +9,9 @@ import {RestApplication} from '@loopback/rest';
 import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
 import {MySequence} from './sequence';
+import {logMiddleware} from './middlewares/log.middleware';
+import {corsMiddleware} from './middlewares/cors.middleware';
+import {performanceMiddleware} from './middlewares/performance.middleware';
 
 export {ApplicationConfig};
 
@@ -20,6 +23,9 @@ export class SourcefuseTrainingApplication extends BootMixin(
 
     // Set up the custom sequence
     this.sequence(MySequence);
+    this.middleware(performanceMiddleware);
+    this.middleware(logMiddleware);
+    this.middleware(corsMiddleware);
 
     // Set up default home page
     this.static('/', path.join(__dirname, '../public'));
