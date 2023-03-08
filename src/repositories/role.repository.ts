@@ -1,16 +1,22 @@
-import {inject} from '@loopback/core';
-import {DefaultCrudRepository} from '@loopback/repository';
+import {inject, Getter} from '@loopback/core';
+import {DefaultCrudRepository, repository, BelongsToAccessor} from '@loopback/repository';
 import {CustomerDataSource} from '../datasources';
-import {Role, RoleRelations} from '../models';
+import {Role, RoleRelations, User} from '../models';
+import {UserRepository} from './user.repository';
 
 export class RoleRepository extends DefaultCrudRepository<
   Role,
   typeof Role.prototype.id,
   RoleRelations
 > {
+
+  public readonly user: BelongsToAccessor<User, typeof Role.prototype.id>;
+
   constructor(
-    @inject('datasources.Customer') dataSource: CustomerDataSource,
+    @inject('datasources.Customer') dataSource: CustomerDataSource, @repository.getter('UserRepository') protected userRepositoryGetter: Getter<UserRepository>,
   ) {
     super(Role, dataSource);
+    this.user = this.createBelongsToAccessorFor('user', userRepositoryGetter,);
+    this.registerInclusionResolver('user', this.user.inclusionResolver);
   }
 }
