@@ -5,7 +5,7 @@ export const performanceMiddleware: Middleware = async (context, next) => {
   const startTime = performance.now();
 
   try {
-    await next();
+    return await next();
   } catch (e) {
     console.error(e);
     context.response.status(500).json({error: e.toString()});

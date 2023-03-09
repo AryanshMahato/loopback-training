@@ -1,5 +1,5 @@
 import {inject, Getter} from '@loopback/core';
-import {DefaultCrudRepository, repository, BelongsToAccessor} from '@loopback/repository';
+import {DefaultCrudRepository, repository, HasManyRepositoryFactory} from '@loopback/repository';
 import {CustomerDataSource} from '../datasources';
 import {Role, RoleRelations, User} from '../models';
 import {UserRepository} from './user.repository';
@@ -10,13 +10,11 @@ export class RoleRepository extends DefaultCrudRepository<
   RoleRelations
 > {
 
-  public readonly user: BelongsToAccessor<User, typeof Role.prototype.id>;
+  public readonly users: HasManyRepositoryFactory<User, typeof Role.prototype.id>;
 
-  constructor(
-    @inject('datasources.Customer') dataSource: CustomerDataSource, @repository.getter('UserRepository') protected userRepositoryGetter: Getter<UserRepository>,
-  ) {
+  constructor(@inject('datasources.Customer') dataSource: CustomerDataSource, @repository.getter('UserRepository') protected userRepositoryGetter: Getter<UserRepository>,) {
     super(Role, dataSource);
-    this.user = this.createBelongsToAccessorFor('user', userRepositoryGetter,);
-    this.registerInclusionResolver('user', this.user.inclusionResolver);
+    this.users = this.createHasManyRepositoryFactoryFor('users', userRepositoryGetter,);
+    this.registerInclusionResolver('users', this.users.inclusionResolver);
   }
 }

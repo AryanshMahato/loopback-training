@@ -9,5 +9,5 @@ export const logMiddleware: Middleware = async (context, next) => {
     }, User Agent: ${headers['user-agent']} Request IP: ${context.request.ip}`,
   );
 
-  await next();
+  return next();
 };

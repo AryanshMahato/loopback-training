@@ -1,13 +1,14 @@
 {
   "ids": {
-    "User": 5
+    "User": 6
   },
   "models": {
     "User": {
       "1": "{\"name\":\"string\",\"email\":\"string\",\"username\":\"string\",\"password\":\"string\",\"gender\":\"string\",\"id\":\"1\"}",
       "2": "{\"name\":\"string\",\"email\":\"string\",\"username\":\"string\",\"password\":\"string\",\"gender\":\"string\",\"id\":\"2\"}",
       "b6be7e54-b442-4adf-8479-14b9a73f592e": "{\"id\":\"b6be7e54-b442-4adf-8479-14b9a73f592e\",\"name\":\"string\",\"email\":\"string\",\"username\":\"string\",\"password\":\"string\",\"gender\":\"string\"}",
-      "d832f406-aef2-4f47-82f9-8c06c3c34745": "{\"id\":\"d832f406-aef2-4f47-82f9-8c06c3c34745\",\"name\":\"string\",\"email\":\"string\",\"username\":\"string\",\"password\":\"string\",\"gender\":\"string\"}"
+      "d832f406-aef2-4f47-82f9-8c06c3c34745": "{\"id\":\"d832f406-aef2-4f47-82f9-8c06c3c34745\",\"name\":\"string\",\"email\":\"string\",\"username\":\"string\",\"password\":\"string\",\"gender\":\"string\"}",
+      "437b31e5-1deb-4c64-aab9-9b5fdede3a55": "{\"id\":\"437b31e5-1deb-4c64-aab9-9b5fdede3a55\",\"name\":\"Aryansh\",\"email\":\"aryansh.mahato@sourcefuse.com\",\"username\":\"AryanshMahato\",\"password\":\"Aryansh\",\"gender\":\"MALE\",\"customerId\":\"\"}"
     }
   }
 }

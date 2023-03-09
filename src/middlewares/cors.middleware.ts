@@ -8,5 +8,5 @@ export const corsMiddleware: Middleware = async (context, next) => {
     context.response.status(403).json({error: 'Referer did not matched'});
   }
 
-  await next();
+  return next();
 };

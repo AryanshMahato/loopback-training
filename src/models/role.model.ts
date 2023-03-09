@@ -1,6 +1,7 @@
-import {belongsTo, Entity, model, property} from '@loopback/repository';
-import {User, UserWithRelations} from '.';
+import {Entity, model, property, hasMany} from '@loopback/repository';
 import {v4 as uuid} from 'uuid';
+import {RoleKey} from './role.enum';
+import {User} from './user.model';
 
 @model()
 export class Role extends Entity {
@@ -13,8 +14,11 @@ export class Role extends Entity {
   @property({
     type: 'string',
     required: true,
+    jsonSchema: {
+      enum: Object.values(RoleKey),
+    },
   })
-  key: string;
+  key: RoleKey;
 
   @property({
     type: 'string',
@@ -29,16 +33,14 @@ export class Role extends Entity {
   })
   id: string;
 
-  @belongsTo(() => User)
-  userId: string;
+  @hasMany(() => User)
+  users: User[];
 
   constructor(data?: Partial<Role>) {
     super(data);
   }
 }
 
-export interface RoleRelations {
-  user?: UserWithRelations;
-}
+export interface RoleRelations {}
 
 export type RoleWithRelations = Role & RoleRelations;
