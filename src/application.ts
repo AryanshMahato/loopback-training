@@ -12,6 +12,8 @@ import {MySequence} from './sequence';
 import {logMiddleware} from './middlewares/log.middleware';
 import {corsMiddleware} from './middlewares/cors.middleware';
 import {performanceMiddleware} from './middlewares/performance.middleware';
+import {LoggingBindings, LoggingComponent} from '@loopback/logging';
+import {format, LoggerOptions} from 'winston';
 
 export {ApplicationConfig};
 
@@ -20,6 +22,18 @@ export class SourcefuseTrainingApplication extends BootMixin(
 ) {
   constructor(options: ApplicationConfig = {}) {
     super(options);
+    this.configure(LoggingBindings.COMPONENT).to({
+      enableFluent: false,
+      enableHttpAccessLog: false,
+    });
+
+    this.configure<LoggerOptions>(LoggingBindings.WINSTON_LOGGER).to({
+      level: 'info',
+      format: format.json(),
+      defaultMeta: {framework: 'LoopBack'},
+    });
+
+    this.component(LoggingComponent);
 
     // Set up the custom sequence
     this.sequence(MySequence);
